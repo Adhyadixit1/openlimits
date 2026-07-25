@@ -345,6 +345,17 @@ export default function Home() {
           <span />
           <span />
         </button>
+        <svg
+          className="header-bottom-wave"
+          viewBox="0 0 1440 78"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,17 C170,68 312,67 455,29 C624,-16 782,-4 943,38 C1133,88 1285,71 1440,28 L1440,0 L0,0 Z"
+            fill="currentColor"
+          />
+        </svg>
       </header>
 
       <section
@@ -441,20 +452,18 @@ export default function Home() {
             {slidesPaused ? "PLAY" : "PAUSE"}
           </button>
         </div>
+        <svg
+          className="hero-bottom-wave"
+          viewBox="0 0 1440 132"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,90 C170,128 308,123 468,79 C652,28 796,27 965,76 C1140,126 1292,120 1440,74 L1440,132 L0,132 Z"
+            fill="currentColor"
+          />
+        </svg>
       </section>
-
-      <div className="ticker" aria-label="Open Limits capabilities">
-        <div className="ticker-track">
-          {Array.from({ length: 2 }).map((_, repeat) => (
-            <span key={repeat}>
-              STRATEGY <b>✦</b> DESIGN <b>✦</b> DEVELOPMENT <b>✦</b> CONVERSION{" "}
-              <b>✦</b> SHOPIFY PLUS <b>✦</b>{" "}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <SectionWave from="#f6f2ea" to="#111111" />
 
       <section className="work-section" id="work">
         <div className="section-intro">

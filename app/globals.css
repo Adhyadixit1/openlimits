@@ -448,32 +448,6 @@ button:hover .arrow--diagonal {
   color: var(--acid);
 }
 
-.ticker {
-  background: var(--purple);
-  color: white;
-  overflow: hidden;
-  transform: rotate(-1deg) scale(1.01);
-}
-
-.ticker-track {
-  animation: ticker 28s linear infinite;
-  display: flex;
-  font-size: 1.05rem;
-  font-weight: 780;
-  padding: 15px 0;
-  white-space: nowrap;
-  width: max-content;
-}
-
-.ticker-track b {
-  color: var(--acid);
-  margin: 0 20px;
-}
-
-@keyframes ticker {
-  to { transform: translateX(-50%); }
-}
-
 .section-wave {
   display: block;
   height: clamp(70px, 9vw, 140px);
@@ -1398,10 +1372,6 @@ button:hover .arrow--diagonal {
     min-height: 36px;
   }
 
-  .ticker-track {
-    font-size: .8rem;
-  }
-
   .work-section,
   .services-section,
   .proof-section {
@@ -1630,11 +1600,24 @@ button:hover .arrow--diagonal {
 
 .site-header {
   color: white;
+  overflow: visible;
 }
 
 .site-header .nav-cta {
   background: white;
   color: var(--ink);
+}
+
+.header-bottom-wave {
+  color: rgba(255,255,255,.11);
+  height: 52px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 .hero.hero-carousel {
@@ -1883,9 +1866,25 @@ button:hover .arrow--diagonal {
   width: 22px;
 }
 
+.hero-bottom-wave {
+  bottom: -1px;
+  color: var(--ink);
+  height: clamp(68px, 8vw, 118px);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 5;
+}
+
 @media (max-width: 760px) {
   .site-header {
     padding: 0 16px;
+  }
+
+  .header-bottom-wave {
+    height: 38px;
   }
 
   .site-header .menu-button span {
@@ -2008,15 +2007,15 @@ button:hover .arrow--diagonal {
     background: rgba(17,17,17,.74);
     height: 32px;
   }
+
+  .hero-bottom-wave {
+    height: 72px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .ticker-track {
-    animation: none;
   }
 
   *,
