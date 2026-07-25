@@ -1833,11 +1833,12 @@ button:hover .arrow--diagonal {
 
 @media (max-width: 760px) {
   .site-header {
+    height: 64px;
     padding: 0 16px;
   }
 
   .header-bottom-wave {
-    height: 38px;
+    height: 30px;
   }
 
   .site-header .menu-button span {
@@ -1851,11 +1852,11 @@ button:hover .arrow--diagonal {
   .hero.hero-video {
     height: auto;
     min-height: 0;
-    padding: 118px 10px 68px;
+    padding: 96px 10px 56px;
   }
 
   .hero-video-frame {
-    aspect-ratio: 3 / 4.9;
+    aspect-ratio: 3 / 4.62;
     background: #111;
     border-radius: 20px;
     inset: auto;
@@ -1869,8 +1870,8 @@ button:hover .arrow--diagonal {
     border-radius: 0;
     display: block;
     filter: brightness(1.08) saturate(1.1) contrast(1);
-    height: 124%;
-    inset: -17% 0 auto;
+    height: 128%;
+    inset: -22% 0 auto;
     object-fit: cover;
     object-position: center top;
     position: absolute;
