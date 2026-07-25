@@ -490,7 +490,7 @@ button:hover .arrow--diagonal {
 }
 
 .project-media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   border-radius: 24px;
   overflow: hidden;
   position: relative;
@@ -509,8 +509,13 @@ button:hover .arrow--diagonal {
 }
 
 .project-media img {
-  height: 100%;
+  bottom: 0;
+  height: calc(100% - 34px);
+  left: 0;
   object-fit: cover;
+  position: absolute;
+  right: 0;
+  top: 34px;
   transition: transform .6s cubic-bezier(.2,.7,.2,1);
   width: 100%;
 }
@@ -561,10 +566,14 @@ button:hover .arrow--diagonal {
 }
 
 .project-placeholder {
-  height: 100%;
+  bottom: 0;
+  height: calc(100% - 34px);
+  left: 0;
   overflow: hidden;
   padding: 14% 9% 8%;
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: 34px;
 }
 
 .mock-nav {
@@ -1164,40 +1173,46 @@ button:hover .arrow--diagonal {
   }
 
   .hero {
-    min-height: 830px;
-    padding: 130px 20px 50px;
+    min-height: 700px;
+    padding: 108px 20px 38px;
   }
 
   .hero h1 {
-    font-size: clamp(4rem, 21vw, 6.1rem);
-    line-height: .78;
-    margin-top: 50px;
+    font-size: clamp(3.7rem, 18.5vw, 5.5rem);
+    line-height: .76;
+    margin-top: 34px;
   }
 
   .hero-script {
-    font-size: .68em;
+    font-size: .64em;
     line-height: .84;
     margin-left: 3vw;
-    margin-top: 26px;
+    margin-top: 16px;
     white-space: normal;
   }
 
   .hero-lede {
-    font-size: .97rem;
-    margin: 48px 0 26px;
+    font-size: .92rem;
+    line-height: 1.42;
+    margin: 32px 0 20px;
     max-width: 360px;
   }
 
   .hero-actions {
     align-items: flex-start;
     flex-direction: column;
-    gap: 18px;
+    gap: 13px;
+  }
+
+  .hero-actions .button {
+    gap: 28px;
+    padding: 16px 22px;
   }
 
   .award-stack {
-    bottom: 13px;
-    right: -12px;
-    transform: scale(.5);
+    bottom: -22px;
+    right: -42px;
+    transform: scale(.36);
   }
 
   .hero-sticker {
@@ -1229,14 +1244,48 @@ button:hover .arrow--diagonal {
   }
 
   .filters {
-    gap: 22px;
-    margin-top: 55px;
+    border-bottom: 0;
+    gap: 9px;
+    margin: 42px -20px 30px;
     overflow-x: auto;
+    padding: 0 20px 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 999px;
+    flex: 0 0 auto;
+    font-size: .76rem;
+    padding: 11px 15px;
+    white-space: nowrap;
+  }
+
+  .filter--active {
+    background: var(--acid);
+    border-color: var(--acid);
+    color: var(--ink);
+  }
+
+  .filter--active::after {
+    display: none;
+  }
+
+  .filter sup {
+    font-size: .5rem;
+    position: static;
   }
 
   .project-grid {
-    gap: 55px;
+    gap: 64px;
     grid-template-columns: 1fr;
+    margin-left: -8px;
+    margin-right: -8px;
   }
 
   .project-card:nth-child(4n + 2),
@@ -1245,11 +1294,48 @@ button:hover .arrow--diagonal {
   }
 
   .project-media {
-    border-radius: 16px;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+  }
+
+  .project-media::after {
+    border-radius: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    top: 44px;
+  }
+
+  .browser-bar {
+    height: 34px;
+    padding: 0 11px;
+  }
+
+  .browser-bar small {
+    font-size: .43rem;
+    max-width: 58%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-number {
+    bottom: 18px;
+    right: 18px;
   }
 
   .project-details h3 {
-    font-size: 1.45rem;
+    font-size: 1.75rem;
+  }
+
+  .project-details {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 19px;
+  }
+
+  .project-details > div > span {
+    font-size: .86rem;
   }
 
   .manifesto {
