@@ -1593,7 +1593,7 @@ button:hover .arrow--diagonal {
   }
 
   .chat-launcher {
-    bottom: max(14px, env(safe-area-inset-bottom));
+    bottom: calc(max(22px, env(safe-area-inset-bottom)) + 54px);
     right: 14px;
   }
 }
