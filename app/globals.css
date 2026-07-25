@@ -1599,17 +1599,22 @@ button:hover .arrow--diagonal {
 }
 
 .site-header {
-  color: white;
+  color: var(--ink);
   overflow: visible;
 }
 
+.site-header > :not(.header-bottom-wave) {
+  position: relative;
+  z-index: 2;
+}
+
 .site-header .nav-cta {
-  background: white;
-  color: var(--ink);
+  background: var(--ink);
+  color: white;
 }
 
 .header-bottom-wave {
-  color: rgba(255,255,255,.11);
+  color: rgba(255,183,219,.46);
   height: 52px;
   left: 0;
   pointer-events: none;
@@ -1617,11 +1622,15 @@ button:hover .arrow--diagonal {
   right: 0;
   top: 100%;
   width: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 
 .hero.hero-carousel {
-  background: var(--ink);
+  background:
+    radial-gradient(circle at 11% 28%, rgba(255,183,219,.72), transparent 23%),
+    radial-gradient(circle at 82% 17%, rgba(139,220,255,.58), transparent 24%),
+    radial-gradient(circle at 66% 83%, rgba(183,239,102,.58), transparent 25%),
+    #fff6e9;
   height: min(900px, 100svh);
   min-height: 760px;
   overflow: hidden;
@@ -1635,7 +1644,10 @@ button:hover .arrow--diagonal {
 }
 
 .hero-slide {
+  background: #fff9ef;
+  border: 1px solid rgba(17,17,17,.1);
   border-radius: 30px;
+  box-shadow: 0 28px 80px rgba(70,42,20,.16);
   inset: 0;
   opacity: 0;
   overflow: hidden;
@@ -1658,6 +1670,7 @@ button:hover .arrow--diagonal {
 }
 
 .hero-slide__image {
+  filter: brightness(1.18) saturate(1.2) contrast(.95);
   height: 100%;
   inset: 0;
   object-fit: cover;
@@ -1673,14 +1686,15 @@ button:hover .arrow--diagonal {
 
 .hero-slide__shade {
   background:
-    linear-gradient(90deg, rgba(8,8,10,.94) 0%, rgba(8,8,10,.78) 30%, rgba(8,8,10,.24) 58%, rgba(8,8,10,.04) 100%),
-    linear-gradient(0deg, rgba(8,8,10,.54), transparent 45%);
+    linear-gradient(90deg, rgba(255,248,236,.95) 0%, rgba(255,248,236,.78) 31%, rgba(255,248,236,.18) 59%, rgba(255,248,236,.02) 100%),
+    linear-gradient(0deg, rgba(255,183,219,.26), transparent 44%),
+    linear-gradient(135deg, rgba(183,239,102,.22), transparent 42%);
   inset: 0;
   position: absolute;
 }
 
 .hero-slide__content {
-  color: white;
+  color: var(--ink);
   left: 6.2%;
   max-width: 690px;
   position: absolute;
@@ -1701,13 +1715,13 @@ button:hover .arrow--diagonal {
 }
 
 .hero-slide__eyebrow .pulse {
-  background: var(--acid);
-  box-shadow: 0 0 0 5px rgba(183,239,102,.18);
+  background: var(--purple);
+  box-shadow: 0 0 0 6px rgba(107,78,255,.13);
 }
 
 .hero-slide h1,
 .hero-slide h2 {
-  color: white;
+  color: var(--ink);
   font-size: clamp(4.8rem, 7.5vw, 8.5rem);
   font-style: normal;
   font-weight: 820;
@@ -1718,7 +1732,7 @@ button:hover .arrow--diagonal {
 
 .hero-slide h1 em,
 .hero-slide h2 em {
-  color: var(--acid);
+  color: var(--purple);
   display: block;
   font-family: Georgia, "Times New Roman", serif;
   font-size: .69em;
@@ -1729,7 +1743,7 @@ button:hover .arrow--diagonal {
 }
 
 .hero-slide__content > p {
-  color: rgba(255,255,255,.82);
+  color: rgba(17,17,17,.74);
   font-size: 1rem;
   line-height: 1.5;
   margin: 31px 0 24px;
@@ -1744,9 +1758,9 @@ button:hover .arrow--diagonal {
 
 .hero-slide__button {
   align-items: center;
-  background: white;
+  background: var(--ink);
   border-radius: 999px;
-  color: var(--ink);
+  color: white;
   display: inline-flex;
   font-size: .82rem;
   font-weight: 780;
@@ -1756,14 +1770,14 @@ button:hover .arrow--diagonal {
 }
 
 .hero-slide__button:hover {
-  background: var(--acid);
+  background: var(--purple);
   transform: translateY(-2px);
 }
 
 .hero-slide__actions > button {
   background: none;
   border: 0;
-  color: white;
+  color: var(--ink);
   font-size: .78rem;
   font-weight: 720;
   padding: 10px 0;
@@ -1776,8 +1790,8 @@ button:hover .arrow--diagonal {
 }
 
 .hero-award-years span {
-  background: rgba(255,255,255,.11);
-  border: 1px solid rgba(255,255,255,.24);
+  background: rgba(255,255,255,.62);
+  border: 1px solid rgba(17,17,17,.14);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -1789,14 +1803,14 @@ button:hover .arrow--diagonal {
 }
 
 .hero-award-years b {
-  color: var(--acid);
+  color: var(--purple);
   font-family: var(--font-geist-sans), sans-serif;
   font-size: 1.18rem;
   letter-spacing: -.05em;
 }
 
 .hero-slide__count {
-  color: rgba(255,255,255,.72);
+  color: rgba(17,17,17,.58);
   font-family: var(--font-geist-mono), monospace;
   font-size: .57rem;
   letter-spacing: .08em;
@@ -1819,10 +1833,10 @@ button:hover .arrow--diagonal {
 .hero-arrow,
 .hero-pause {
   align-items: center;
-  background: rgba(17,17,17,.62);
-  border: 1px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(17,17,17,.16);
   border-radius: 999px;
-  color: white;
+  color: var(--ink);
   display: inline-flex;
   height: 36px;
   justify-content: center;
@@ -1842,8 +1856,8 @@ button:hover .arrow--diagonal {
 
 .hero-dots {
   align-items: center;
-  background: rgba(17,17,17,.62);
-  border: 1px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(17,17,17,.16);
   border-radius: 999px;
   display: flex;
   gap: 6px;
@@ -1852,7 +1866,7 @@ button:hover .arrow--diagonal {
 }
 
 .hero-dot {
-  background: rgba(255,255,255,.42);
+  background: rgba(17,17,17,.28);
   border: 0;
   border-radius: 99px;
   height: 6px;
@@ -1862,7 +1876,7 @@ button:hover .arrow--diagonal {
 }
 
 .hero-dot--active {
-  background: var(--acid);
+  background: var(--purple);
   width: 22px;
 }
 
@@ -1888,7 +1902,7 @@ button:hover .arrow--diagonal {
   }
 
   .site-header .menu-button span {
-    background: white;
+    background: var(--ink);
   }
 
   .site-header .nav {
@@ -1914,8 +1928,8 @@ button:hover .arrow--diagonal {
 
   .hero-slide__shade {
     background:
-      linear-gradient(0deg, rgba(8,8,10,.96) 0%, rgba(8,8,10,.78) 48%, rgba(8,8,10,.12) 100%),
-      linear-gradient(90deg, rgba(8,8,10,.45), transparent 75%);
+      linear-gradient(0deg, rgba(255,248,236,.98) 0%, rgba(255,248,236,.88) 45%, rgba(255,248,236,.08) 100%),
+      linear-gradient(90deg, rgba(255,183,219,.3), transparent 75%);
   }
 
   .hero-slide__content {
@@ -2004,7 +2018,7 @@ button:hover .arrow--diagonal {
 
   .hero-pause,
   .hero-dots {
-    background: rgba(17,17,17,.74);
+    background: rgba(255,255,255,.8);
     height: 32px;
   }
 
