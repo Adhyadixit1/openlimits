@@ -115,6 +115,42 @@ const projects: Project[] = [
     url: "https://www.manitobah.com/",
     color: "#ffdd55",
   },
+  {
+    title: "Seerov",
+    category: "Lifestyle",
+    blurb: "A confident, editorial wellness experience built around intention, curiosity and personal freedom.",
+    metric: "Wellness commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/seerov`,
+    url: "https://seerov.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Sherclan",
+    category: "Lifestyle",
+    blurb: "Quiet luxury and refined product storytelling for a contemporary Australian jewellery brand.",
+    metric: "Luxury e-commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/sherclan`,
+    url: "https://www.sherclan.com.au/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Tato Pow",
+    category: "Food & Drink",
+    blurb: "A flavor-packed storefront with bold type, tactile product imagery and serious snack energy.",
+    metric: "DTC food commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/tatopow`,
+    url: "https://tatopow.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "Articles of Style",
+    category: "Lifestyle",
+    blurb: "Premium menswear and bespoke wardrobe expertise translated into a polished consultation journey.",
+    metric: "Luxury menswear",
+    image: `${CLOUDINARY_BASE}/open-limits/articles-of-style`,
+    url: "https://articlesofstyle.com/",
+    color: "#c8b5ff",
+  },
 ];
 
 const reviews = [
