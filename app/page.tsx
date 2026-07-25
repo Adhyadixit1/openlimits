@@ -726,7 +726,7 @@ export default function Home() {
         <div className="hero-video-frame">
           <video
             className="hero-video-media hero-video-media--desktop"
-            src="/create_a_video_simialr_to_this_gwr_video_mvp.mp4"
+            src="/Award_winnign_shopify_agency_ (1)_gwr_video_mvp.mp4"
             autoPlay
             muted
             loop
