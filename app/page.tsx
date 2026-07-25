@@ -66,7 +66,7 @@ const projects: Project[] = [
     category: "Pet Care",
     blurb: "Wholesome product storytelling for single-ingredient treats made for very happy dogs.",
     metric: "Pet food commerce",
-    image: `${CLOUDINARY_BASE}/open-limits/hamels-treats`,
+    image: `${CLOUDINARY_BASE}/open-limits/hamels-treats-v2`,
     url: "https://hamelstreats.com/",
     color: "#ff9068",
   },
