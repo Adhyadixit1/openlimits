@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Project = {
   title: string;
@@ -42,24 +42,6 @@ const projects: Project[] = [
     image: `${CLOUDINARY_BASE}/open-limits/bearaby`,
     url: "https://bearaby.com/",
     color: "#8bdcff",
-  },
-  {
-    title: "Nutragenis",
-    category: "Lifestyle",
-    blurb: "A confident wellness platform that makes personalized nutrition feel clear, credible and actionable.",
-    metric: "Wellness commerce",
-    image: `${CLOUDINARY_BASE}/open-limits/nutragenis`,
-    url: "https://nutragenis.com/",
-    color: "#ffdd55",
-  },
-  {
-    title: "Baby Learns Language",
-    category: "Lifestyle",
-    blurb: "Friendly educational commerce that turns language learning into a joyful family ritual.",
-    metric: "Learning-led retail",
-    image: `${CLOUDINARY_BASE}/open-limits/baby-learns-language`,
-    url: "https://babylearnslanguage.com/",
-    color: "#c8b5ff",
   },
   {
     title: "Hamel's Treats",
@@ -151,6 +133,438 @@ const projects: Project[] = [
     url: "https://articlesofstyle.com/",
     color: "#c8b5ff",
   },
+  {
+    title: "Penrose Skin",
+    category: "Beauty",
+    blurb: "Luxury skincare storytelling with a rich product-first homepage and high-intent shopping journey.",
+    metric: "Skincare commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/penrose-skin-website-1785014710041.jpg",
+    url: "https://penroseskin.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "GODA",
+    category: "Lifestyle",
+    blurb: "Modern apparel commerce with a direct, product-led landing experience.",
+    metric: "Fashion commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/goda-website-1785014717058.jpg",
+    url: "https://godaclothing.com/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Thomson Carter",
+    category: "Beauty",
+    blurb: "Premium perfume commerce designed for quick trust, clear offers and sensory brand positioning.",
+    metric: "Fragrance commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/thomson-carter-website-1785014720817.jpg",
+    url: "https://www.thomsoncarter.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "Anglo Spirit",
+    category: "Lifestyle",
+    blurb: "A refined brand storefront with a heritage feel and clear product-led browsing.",
+    metric: "Lifestyle commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/anglo-spirit-replacement-1785015351446.png",
+    url: "https://anglospirit.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "Bay Smokes",
+    category: "Lifestyle",
+    blurb: "A bold, conversion-focused ecommerce experience for a high-velocity cannabis category brand.",
+    metric: "DTC commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/bay-smokes-replacement-1785015346219.png",
+    url: "https://baysmokes.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "Mystery Shirt In A Box",
+    category: "Lifestyle",
+    blurb: "Sports apparel commerce built around surprise, gifting and fast purchase intent.",
+    metric: "Apparel commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/mystery-shirt-in-a-box-website-1785014731124.jpg",
+    url: "https://mysteryshirtinabox.com/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Frido",
+    category: "Lifestyle",
+    blurb: "Ergonomic product commerce that makes comfort, relief and product education immediately understandable.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/frido-website-1785014735116.jpg",
+    url: "https://myfrido.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Tasty Gains",
+    category: "Food & Drink",
+    blurb: "Nutrition commerce with a bold product story and simple path from craving to cart.",
+    metric: "Food commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/tasty-gains-website-1785014738251.jpg",
+    url: "https://tastygains.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "GymProLuxe",
+    category: "Lifestyle",
+    blurb: "Fitness product commerce built to explain the kit fast and move shoppers toward a focused offer.",
+    metric: "Fitness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/gymproluxe-website-1785014741756.jpg",
+    url: "https://www.gymproluxestore.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "SNOW",
+    category: "Beauty",
+    blurb: "Teeth-whitening commerce with a benefit-first layout, trust markers and strong product hierarchy.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/snow-website-1785014745156.jpg",
+    url: "https://www.trysnow.com/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Lansinoh",
+    category: "Lifestyle",
+    blurb: "Parenting and baby-care commerce focused on reassurance, product education and gentle conversion.",
+    metric: "Family commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/lansinoh-replacement-1785015341300.png",
+    url: "https://lansinoh.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "Resilia",
+    category: "Lifestyle",
+    blurb: "A mission-led digital experience built around credibility, outcomes and clear product messaging.",
+    metric: "B2B platform",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/resilia-website-1785014752674.jpg",
+    url: "https://www.resilia.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "Jennah Organics",
+    category: "Beauty",
+    blurb: "Organic beauty commerce with a clean, direct storefront and product-first shopping path.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/jennah-organics-website-1785014756182.jpg",
+    url: "https://jennahorganics.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "Sans",
+    category: "Food & Drink",
+    blurb: "Non-alcoholic drink retail designed around range, choice and fast product discovery.",
+    metric: "Drink commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/sans-website-1785014834309.jpg",
+    url: "https://sansdrinks.com.au/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Setu",
+    category: "Lifestyle",
+    blurb: "Supplement commerce built around science-backed messaging and simple wellness navigation.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/setu-website-1785014840319.jpg",
+    url: "https://setu.in/",
+    color: "#b7ef66",
+  },
+  {
+    title: "AdTok",
+    category: "Lifestyle",
+    blurb: "A growth-focused B2B website with clear positioning and direct acquisition messaging.",
+    metric: "Agency website",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/adtok-website-1785014845392.jpg",
+    url: "https://www.adtok.co/",
+    color: "#8bdcff",
+  },
+  {
+    title: "White Lion Labs",
+    category: "Lifestyle",
+    blurb: "A focused product and brand experience for a modern performance-led company.",
+    metric: "Brand website",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/white-lion-labs-website-1785014850414.jpg",
+    url: "https://whitelionlabs.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "HumeHealth",
+    category: "Lifestyle",
+    blurb: "Health-tech commerce that makes personal body data feel approachable and actionable.",
+    metric: "Health commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/humehealth-website-1785014857429.jpg",
+    url: "https://humehealth.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "Yorkshire Dental Suite",
+    category: "Lifestyle",
+    blurb: "A service-led dental website designed to build trust and route visitors into bookings.",
+    metric: "Clinic website",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/yorkshire-dental-suite-website-1785014867953.jpg",
+    url: "https://www.yorkshiredentalsuite.co.uk/",
+    color: "#64e6c0",
+  },
+  {
+    title: "Bloom & Bond",
+    category: "Beauty",
+    blurb: "Hair wellness commerce with direct benefit messaging and product-first conversion design.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/bloom-and-bond-website-1785014874357.jpg",
+    url: "https://trybloomandbond.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "WeightRx",
+    category: "Lifestyle",
+    blurb: "Weight-care commerce with a direct offer structure and conversion-minded product education.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/weightrx-website-1785014880369.jpg",
+    url: "https://weightrx.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Everydaisy",
+    category: "Beauty",
+    blurb: "A feminine beauty storefront with soft brand energy and product-led navigation.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/everydaisy-website-1785014903075.jpg",
+    url: "https://everydaisy.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "Zorvera",
+    category: "Beauty",
+    blurb: "A modern wellness and beauty ecommerce experience with bold trust-building presentation.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/zorvera-website-1785014910600.jpg",
+    url: "https://zorvera.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "Sacrasoul",
+    category: "Beauty",
+    blurb: "Aromatics commerce built around ritual, sensory storytelling and a calm path to purchase.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/sacrasoul-website-1785014919172.jpg",
+    url: "https://sacrasoul.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "iRestore",
+    category: "Lifestyle",
+    blurb: "At-home hair growth device commerce with strong education, proof and product hierarchy.",
+    metric: "Health commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/irestore-website-1785014925113.jpg",
+    url: "https://www.irestorelaser.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Aloesun",
+    category: "Beauty",
+    blurb: "Sun-care commerce with bright product positioning and clear benefit-led shopping.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/aloesun-website-1785014995383.jpg",
+    url: "https://aloesun.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "Plantmade",
+    category: "Lifestyle",
+    blurb: "Superfood nutrition commerce with a fresh product story and simple shopping flow.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/plantmade-website-1785015002403.jpg",
+    url: "https://www.plantmade.co/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Primal",
+    category: "Lifestyle",
+    blurb: "Natural supplement commerce built around trust, education and broad product discovery.",
+    metric: "Supplement commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/primal-website-1785015008417.jpg",
+    url: "https://primalharvest.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "Skin Choice",
+    category: "Beauty",
+    blurb: "Skincare commerce with direct acne-care positioning and a simple product-led offer.",
+    metric: "Skincare commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/skin-choice-website-1785015014014.jpg",
+    url: "https://www.skinchoice.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "Dermovia",
+    category: "Beauty",
+    blurb: "Skincare product commerce focused on education, routines and problem-solution clarity.",
+    metric: "Skincare commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/dermovia-website-1785015019502.jpg",
+    url: "https://www.dermovia.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "Full Hair Club",
+    category: "Beauty",
+    blurb: "Hair-care commerce with bold brand voice and a streamlined treatment-focused shopping path.",
+    metric: "Hair commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/full-hair-club-website-1785015024431.jpg",
+    url: "https://fullhairclub.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "Vayose",
+    category: "Lifestyle",
+    blurb: "A modern ecommerce storefront with clean positioning and lifestyle-focused product presentation.",
+    metric: "Lifestyle commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/vayose-website-1785015033556.jpg",
+    url: "https://vayose.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "Stretched Fusion",
+    category: "Lifestyle",
+    blurb: "Fitness commerce built around at-home strength training, guidance and strong landing-page clarity.",
+    metric: "Fitness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/stretched-fusion-website-1785015038321.jpg",
+    url: "https://stretchedfusion.com/",
+    color: "#8bdcff",
+  },
+  {
+    title: "Holy Gels",
+    category: "Beauty",
+    blurb: "Beauty commerce with a focused gel product story and clean purchase path.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/holy-gels-website-1785015043275.jpg",
+    url: "https://holygels.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "Nurecover",
+    category: "Lifestyle",
+    blurb: "Recovery and wellness commerce built around a strong product promise and fast education.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/nurecover-website-1785015051488.jpg",
+    url: "https://nurecover.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "Nomadica",
+    category: "Food & Drink",
+    blurb: "Wine commerce with editorial brand energy and strong product-led browsing.",
+    metric: "Drink commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/nomadica-replacement-1785015488180.png",
+    url: "https://www.explorenomadica.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "The Fresh Cookie Lab",
+    category: "Food & Drink",
+    blurb: "Bakery commerce with a warm, playful product story and crave-first shopping flow.",
+    metric: "Food commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/the-fresh-cookie-lab-website-1785015070160.jpg",
+    url: "https://thefreshcookielab.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "Flo Pilates",
+    category: "Lifestyle",
+    blurb: "A local studio website built around movement, class discovery and booking intent.",
+    metric: "Studio website",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/flo-pilates-website-1785015073326.jpg",
+    url: "https://www.flopilates.com/",
+    color: "#8bdcff",
+  },
+  {
+    title: "AVA Mayfair",
+    category: "Beauty",
+    blurb: "Home-fragrance commerce with trust-led storytelling and premium product positioning.",
+    metric: "Fragrance commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/ava-mayfair-website-1785015078306.jpg",
+    url: "https://avamayfair.com/",
+    color: "#ffdd55",
+  },
+  {
+    title: "Sadboy Saga",
+    category: "Lifestyle",
+    blurb: "Streetwear commerce with a distinct brand voice and direct collection-led shopping.",
+    metric: "Fashion commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/sadboy-saga-website-1785015085950.jpg",
+    url: "https://sadboysaga.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "Javvy Coffee",
+    category: "Food & Drink",
+    blurb: "Coffee commerce with a crisp product promise, strong offer framing and subscription-ready shopping.",
+    metric: "Drink commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/javvy-coffee-website-1785015208504.jpg",
+    url: "https://javvycoffee.com/",
+    color: "#64e6c0",
+  },
+  {
+    title: "Fat Cow Skincare",
+    category: "Beauty",
+    blurb: "Playful skincare commerce with a memorable brand voice and product-first conversion path.",
+    metric: "Skincare commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/fat-cow-skincare-website-1785015215535.jpg",
+    url: "https://fatcowskin.com/",
+    color: "#ff9068",
+  },
+  {
+    title: "Fem8",
+    category: "Lifestyle",
+    blurb: "Women’s wellness commerce with clean trust-building and direct product education.",
+    metric: "Wellness commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/fem8-website-1785015225056.jpg",
+    url: "https://fem-8.com/",
+    color: "#ffb7db",
+  },
+  {
+    title: "Zoomie",
+    category: "Pet Care",
+    blurb: "Pet-focused commerce with friendly positioning and a simple product discovery path.",
+    metric: "Pet commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/zoomie-website-1785015230577.jpg",
+    url: "https://tryzoomie.com/",
+    color: "#b7ef66",
+  },
+  {
+    title: "JOGA",
+    category: "Lifestyle",
+    blurb: "A lifestyle commerce experience with clean brand presence and focused shopping structure.",
+    metric: "Lifestyle commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/joga-website-1785015235603.jpg",
+    url: "https://shopjoga.com/en-us",
+    color: "#8bdcff",
+  },
+  {
+    title: "Dead Simple",
+    category: "Lifestyle",
+    blurb: "A direct, minimal ecommerce experience with sharp product presentation and simple messaging.",
+    metric: "Lifestyle commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/dead-simple-website-1785015241615.jpg",
+    url: "https://dead-simple.co.uk/",
+    color: "#ffdd55",
+  },
+  {
+    title: "Rugged Beard",
+    category: "Beauty",
+    blurb: "Grooming commerce with a strong masculine brand language and product-led shopping.",
+    metric: "Grooming commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/rugged-beard-website-1785015250136.jpg",
+    url: "https://ruggedevo.com/",
+    color: "#c8b5ff",
+  },
+  {
+    title: "OMA & ME",
+    category: "Beauty",
+    blurb: "Beauty commerce with a polished brand world and focused product storytelling.",
+    metric: "Beauty commerce",
+    image: "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9/open-limits/oma-and-me-website-1785015256947.jpg",
+    url: "https://oma-and-me.com/",
+    color: "#64e6c0",
+  },
 ];
 
 const reviews = [
@@ -185,39 +599,6 @@ const services = [
   ["02", "Shopify development", "Fast, flexible builds your team can actually run."],
   ["03", "Brand systems", "A memorable identity that works from feed to checkout."],
   ["04", "Conversion growth", "Sharper journeys, smarter experiments, stronger numbers."],
-];
-
-const heroSlides = [
-  {
-    image: "/hero/awards-studio.webp",
-    eyebrow: "Shopify website awards · 2023—2025",
-    title: "Three years.",
-    accent: "Three wins.",
-    copy: "Awarded best website three years running. Open Limits creates Shopify experiences built to lead their category.",
-    cta: "See award-winning work",
-    href: "#work",
-    position: "center",
-  },
-  {
-    image: "/hero/commerce-studio.webp",
-    eyebrow: "Conversion-first Shopify design",
-    title: "Websites built",
-    accent: "to move product.",
-    copy: "Strategy, art direction and development working as one—so every beautiful decision earns its place.",
-    cta: "Explore our portfolio",
-    href: "#work",
-    position: "center",
-  },
-  {
-    image: "/hero/launch-studio.webp",
-    eyebrow: "One senior team · worldwide",
-    title: "From first sketch",
-    accent: "to launch day.",
-    copy: "A sharp, collaborative process for ambitious brands that need clarity, momentum and a launch people remember.",
-    cta: "See how we work",
-    href: "#services",
-    position: "center",
-  },
 ];
 
 function SectionWave({
@@ -266,9 +647,6 @@ export default function Home() {
   const [filter, setFilter] = useState<"All" | Project["category"]>("All");
   const [menuOpen, setMenuOpen] = useState(false);
   const [brokenImages, setBrokenImages] = useState<Record<string, boolean>>({});
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [slidesPaused, setSlidesPaused] = useState(false);
-  const swipeStart = useRef<number | null>(null);
 
   const filteredProjects = useMemo(
     () =>
@@ -290,24 +668,6 @@ export default function Home() {
     script.crossOrigin = "*";
     document.head.appendChild(script);
   }, []);
-
-  useEffect(() => {
-    if (slidesPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 6000);
-
-    return () => window.clearInterval(timer);
-  }, [slidesPaused]);
-
-  const moveSlide = (direction: number) => {
-    setActiveSlide((current) =>
-      (current + direction + heroSlides.length) % heroSlides.length,
-    );
-  };
 
   const openChat = () => {
     const chatWindow = window as typeof window & {
@@ -359,98 +719,59 @@ export default function Home() {
       </header>
 
       <section
-        className="hero hero-carousel"
+        className="hero hero-video"
         id="top"
-        aria-roledescription="carousel"
-        aria-label="Open Limits highlights"
-        onMouseEnter={() => setSlidesPaused(true)}
-        onMouseLeave={() => setSlidesPaused(false)}
-        onTouchStart={(event) => {
-          swipeStart.current = event.touches[0]?.clientX ?? null;
-        }}
-        onTouchEnd={(event) => {
-          if (swipeStart.current === null) return;
-          const end = event.changedTouches[0]?.clientX ?? swipeStart.current;
-          const distance = end - swipeStart.current;
-          if (Math.abs(distance) > 45) moveSlide(distance > 0 ? -1 : 1);
-          swipeStart.current = null;
-        }}
+        aria-label="Open Limits hero"
       >
-        <div className="hero-slides" aria-live="polite">
-          {heroSlides.map((slide, index) => {
-            const Heading = index === 0 ? "h1" : "h2";
-            return (
-              <article
-                className={index === activeSlide ? "hero-slide hero-slide--active" : "hero-slide"}
-                key={slide.title}
-                aria-hidden={index !== activeSlide}
-              >
-                <img
-                  className="hero-slide__image"
-                  src={slide.image}
-                  alt=""
-                  loading={index === 0 ? "eager" : "lazy"}
-                  style={{ objectPosition: slide.position }}
-                />
-                <div className="hero-slide__shade" />
-                <div className="hero-slide__content">
-                  <div className="hero-slide__eyebrow">
-                    <span className="pulse" />
-                    {slide.eyebrow}
-                  </div>
-                  <Heading>
-                    {slide.title}
-                    <em>{slide.accent}</em>
-                  </Heading>
-                  <p>{slide.copy}</p>
-                  <div className="hero-slide__actions">
-                    <a className="hero-slide__button" href={slide.href}>
-                      {slide.cta} <Arrow />
-                    </a>
-                    <button onClick={openChat}>
-                      Talk to the team <Arrow diagonal />
-                    </button>
-                  </div>
-                  {index === 0 && (
-                    <div className="hero-award-years" aria-label="Best website awards">
-                      <span><b>2023</b> Best website</span>
-                      <span><b>2024</b> Best website</span>
-                      <span><b>2025</b> Best website</span>
-                    </div>
-                  )}
-                </div>
-                <span className="hero-slide__count">0{index + 1} / 0{heroSlides.length}</span>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="hero-controls">
-          <button className="hero-arrow" onClick={() => moveSlide(-1)} aria-label="Previous slide">
-            ←
-          </button>
-          <div className="hero-dots" role="tablist" aria-label="Choose a hero slide">
-            {heroSlides.map((slide, index) => (
-              <button
-                key={slide.title}
-                className={index === activeSlide ? "hero-dot hero-dot--active" : "hero-dot"}
-                onClick={() => setActiveSlide(index)}
-                role="tab"
-                aria-selected={index === activeSlide}
-                aria-label={`Slide ${index + 1}: ${slide.title} ${slide.accent}`}
-              />
-            ))}
+        <div className="hero-video-frame">
+          <video
+            className="hero-video-media hero-video-media--desktop"
+            src="/create_a_video_simialr_to_this_gwr_video_mvp.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+          <video
+            className="hero-video-media hero-video-media--mobile"
+            src="/Award_winnign_shopify_agency__gwr_video_mvp.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+          <div className="hero-video-shade" />
+          <div className="hero-video-content">
+            <div className="hero-slide__eyebrow">
+              <span className="pulse" />
+              Shopify website awards · 2023—2025
+            </div>
+            <h1>
+              Stand out.
+              <em>Sell louder.</em>
+            </h1>
+            <p>
+              Open Limits is the award-winning Shopify website design agency for
+              brands that want movement, memory and serious conversion energy.
+            </p>
+            <div className="hero-slide__actions">
+              <a className="hero-slide__button" href="#work">
+                See award-winning work <Arrow />
+              </a>
+              <button onClick={openChat}>
+                Talk to the team <Arrow diagonal />
+              </button>
+            </div>
+            <div className="hero-award-years" aria-label="Best website awards">
+              <span><b>2023</b> Best website</span>
+              <span><b>2024</b> Best website</span>
+              <span><b>2025</b> Best website</span>
+            </div>
           </div>
-          <button className="hero-arrow" onClick={() => moveSlide(1)} aria-label="Next slide">
-            →
-          </button>
-          <button
-            className="hero-pause"
-            onClick={() => setSlidesPaused((paused) => !paused)}
-            aria-label={slidesPaused ? "Play carousel" : "Pause carousel"}
-          >
-            {slidesPaused ? "PLAY" : "PAUSE"}
-          </button>
         </div>
         <svg
           className="hero-bottom-wave"
