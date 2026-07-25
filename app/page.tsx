@@ -255,6 +255,40 @@ export default function Home() {
     document.head.appendChild(script);
   }, []);
 
+  useEffect(() => {
+    const hero = document.querySelector<HTMLElement>(".hero");
+    if (!hero) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const updateScrollLayers = () => {
+      const scroll = Math.min(window.scrollY, hero.offsetHeight);
+      hero.style.setProperty("--parallax-slow-y", `${scroll * 0.035}px`);
+      hero.style.setProperty("--parallax-mid-y", `${scroll * 0.075}px`);
+      hero.style.setProperty("--parallax-fast-y", `${scroll * 0.13}px`);
+    };
+
+    const updatePointerLayers = (event: PointerEvent) => {
+      const bounds = hero.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      hero.style.setProperty("--parallax-x-slow", `${x * -5}px`);
+      hero.style.setProperty("--parallax-x-mid", `${x * 8}px`);
+      hero.style.setProperty("--parallax-x-fast", `${x * -15}px`);
+      hero.style.setProperty("--parallax-pointer-slow-y", `${y * -2}px`);
+      hero.style.setProperty("--parallax-pointer-mid-y", `${y * 5}px`);
+      hero.style.setProperty("--parallax-pointer-fast-y", `${y * -9}px`);
+    };
+
+    updateScrollLayers();
+    window.addEventListener("scroll", updateScrollLayers, { passive: true });
+    hero.addEventListener("pointermove", updatePointerLayers, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollLayers);
+      hero.removeEventListener("pointermove", updatePointerLayers);
+    };
+  }, []);
+
   const openChat = () => {
     const chatWindow = window as typeof window & {
       Tawk_API?: { maximize?: () => void };
@@ -294,48 +328,97 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-orbit orbit-one" />
-        <div className="hero-orbit orbit-two" />
-        <div className="hero-copy">
-          <div className="eyebrow">
-            <span className="pulse" />
-            Shopify design studio · Worldwide
-          </div>
-          <h1>
-            Websites that
-            <span className="hero-script">refuse to blend in.</span>
-          </h1>
-          <p className="hero-lede">
-            Open Limits builds culture-shifting Shopify experiences for ambitious
-            brands ready to look bigger, move faster and sell more.
-          </p>
-          <div className="hero-actions">
-            <a className="button button--dark" href="#work">
-              See selected work <Arrow />
-            </a>
-            <button className="text-link" onClick={openChat}>
-              Tell us what you&apos;re building <Arrow diagonal />
-            </button>
-          </div>
+        <div className="hero-parallax" aria-hidden="true">
+          <img
+            className="hero-layer hero-layer--mesh"
+            src="/hero/hero-mesh.svg"
+            alt=""
+          />
+          <img
+            className="hero-layer hero-layer--orbits"
+            src="/hero/hero-orbits.svg"
+            alt=""
+          />
+          <img
+            className="hero-layer hero-layer--sparks"
+            src="/hero/hero-sparks.svg"
+            alt=""
+          />
         </div>
-        <div className="award-stack" aria-label="Best Shopify website awards">
-          <div className="award award--2023">
-            <span>AWARDED</span>
-            <strong>2023</strong>
-            <small>BEST WEBSITE</small>
+
+        <div className="hero-layout">
+          <div className="hero-copy">
+            <div className="eyebrow hero-eyebrow">
+              <span className="pulse" />
+              Award-winning Shopify agency · Worldwide
+            </div>
+            <h1>
+              Shopify sites
+              <span className="hero-script">that keep winning.</span>
+            </h1>
+            <p className="hero-lede">
+              Three consecutive years awarded for best website. Open Limits turns
+              ambitious Shopify brands into category leaders people remember.
+            </p>
+            <div className="hero-actions">
+              <a className="button button--dark" href="#work">
+                See the winning work <Arrow />
+              </a>
+              <button className="text-link" onClick={openChat}>
+                Start your project <Arrow diagonal />
+              </button>
+            </div>
+            <div className="hero-trust" aria-label="Open Limits trust signals">
+              <span><b>60+</b> launches</span>
+              <span><b>4.9/5</b> client rating</span>
+              <span><b>Global</b> delivery</span>
+            </div>
           </div>
-          <div className="award award--2024">
-            <span>AWARDED</span>
-            <strong>2024</strong>
-            <small>BEST WEBSITE</small>
-          </div>
-          <div className="award award--2025">
-            <span>AWARDED</span>
-            <strong>2025</strong>
-            <small>BEST WEBSITE</small>
-          </div>
+
+          <aside className="award-showcase" aria-label="Shopify best website awards 2023 through 2025">
+            <img className="award-halo" src="/hero/award-halo.svg" alt="" aria-hidden="true" />
+            <div className="award-showcase__top">
+              <span>THE PROOF / 03 WINS</span>
+              <strong>THREE YEARS.<br />THREE WINS.</strong>
+            </div>
+            <div className="award-showcase__title">
+              <span>AWARDED SHOPIFY AGENCY</span>
+              <strong>BEST<br />WEBSITE</strong>
+            </div>
+            <div className="award-years">
+              <div className="award-year award-year--pink">
+                <span>AWARDED</span>
+                <strong>2023</strong>
+                <small>BEST WEBSITE</small>
+              </div>
+              <div className="award-year award-year--acid">
+                <span>AWARDED</span>
+                <strong>2024</strong>
+                <small>BEST WEBSITE</small>
+              </div>
+              <div className="award-year award-year--blue">
+                <span>AWARDED</span>
+                <strong>2025</strong>
+                <small>BEST WEBSITE</small>
+              </div>
+            </div>
+            <div className="award-showcase__footer">
+              <span>2023—2025</span>
+              <span>SHOPIFY WEBSITE DESIGN</span>
+              <span>OPEN LIMITS</span>
+            </div>
+          </aside>
         </div>
-        <div className="hero-sticker">SHOPIFY<br />AGENCY<br />OF THE YEAR</div>
+
+        <div className="hero-proof-ribbon" aria-hidden="true">
+          <span>SHOPIFY AWARD WINNER</span>
+          <b>✦</b>
+          <span>2023</span>
+          <b>✦</b>
+          <span>2024</span>
+          <b>✦</b>
+          <span>2025</span>
+        </div>
       </section>
 
       <div className="ticker" aria-label="Open Limits capabilities">
