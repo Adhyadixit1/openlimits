@@ -726,7 +726,7 @@ export default function Home() {
         <div className="hero-video-frame">
           <video
             className="hero-video-media hero-video-media--desktop"
-            src="/Award_winnign_shopify_agency_ (1)_gwr_video_mvp.mp4"
+            src="https://res.cloudinary.com/dvtdzotx2/video/upload/q_auto,f_auto/open-limits/desktop-hero-award-winning-shopify-agency-1785017085626.mp4"
             autoPlay
             muted
             loop
@@ -736,7 +736,7 @@ export default function Home() {
           />
           <video
             className="hero-video-media hero-video-media--mobile"
-            src="/Award_winnign_shopify_agency__gwr_video_mvp.mp4"
+            src="https://res.cloudinary.com/dvtdzotx2/video/upload/q_auto,f_auto/open-limits/mobile-hero-award-winning-shopify-agency-1785017094922.mp4"
             autoPlay
             muted
             loop
