@@ -1901,11 +1901,7 @@ button:hover .arrow--diagonal {
   }
 
   .hero-slide__eyebrow {
-    color: white;
-    font-size: .46rem;
-    gap: 7px;
-    letter-spacing: .08em;
-    text-shadow: 0 2px 14px rgba(0,0,0,.38);
+    display: none;
   }
 
   .hero-video-content h1 {
