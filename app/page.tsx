@@ -255,40 +255,6 @@ export default function Home() {
     document.head.appendChild(script);
   }, []);
 
-  useEffect(() => {
-    const hero = document.querySelector<HTMLElement>(".hero");
-    if (!hero) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const updateScrollLayers = () => {
-      const scroll = Math.min(window.scrollY, hero.offsetHeight);
-      hero.style.setProperty("--parallax-slow-y", `${scroll * 0.035}px`);
-      hero.style.setProperty("--parallax-mid-y", `${scroll * 0.075}px`);
-      hero.style.setProperty("--parallax-fast-y", `${scroll * 0.13}px`);
-    };
-
-    const updatePointerLayers = (event: PointerEvent) => {
-      const bounds = hero.getBoundingClientRect();
-      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-      hero.style.setProperty("--parallax-x-slow", `${x * -5}px`);
-      hero.style.setProperty("--parallax-x-mid", `${x * 8}px`);
-      hero.style.setProperty("--parallax-x-fast", `${x * -15}px`);
-      hero.style.setProperty("--parallax-pointer-slow-y", `${y * -2}px`);
-      hero.style.setProperty("--parallax-pointer-mid-y", `${y * 5}px`);
-      hero.style.setProperty("--parallax-pointer-fast-y", `${y * -9}px`);
-    };
-
-    updateScrollLayers();
-    window.addEventListener("scroll", updateScrollLayers, { passive: true });
-    hero.addEventListener("pointermove", updatePointerLayers, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", updateScrollLayers);
-      hero.removeEventListener("pointermove", updatePointerLayers);
-    };
-  }, []);
-
   const openChat = () => {
     const chatWindow = window as typeof window & {
       Tawk_API?: { maximize?: () => void };
@@ -328,24 +294,6 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-parallax" aria-hidden="true">
-          <img
-            className="hero-layer hero-layer--mesh"
-            src="/hero/hero-mesh.svg"
-            alt=""
-          />
-          <img
-            className="hero-layer hero-layer--orbits"
-            src="/hero/hero-orbits.svg"
-            alt=""
-          />
-          <img
-            className="hero-layer hero-layer--sparks"
-            src="/hero/hero-sparks.svg"
-            alt=""
-          />
-        </div>
-
         <div className="hero-layout">
           <div className="hero-copy">
             <div className="eyebrow hero-eyebrow">
@@ -376,7 +324,6 @@ export default function Home() {
           </div>
 
           <aside className="award-showcase" aria-label="Shopify best website awards 2023 through 2025">
-            <img className="award-halo" src="/hero/award-halo.svg" alt="" aria-hidden="true" />
             <div className="award-showcase__top">
               <span>THE PROOF / 03 WINS</span>
               <strong>THREE YEARS.<br />THREE WINS.</strong>

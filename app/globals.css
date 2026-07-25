@@ -168,15 +168,6 @@ button:hover .arrow--diagonal {
 }
 
 .hero {
-  --parallax-slow-y: 0px;
-  --parallax-mid-y: 0px;
-  --parallax-fast-y: 0px;
-  --parallax-x-slow: 0px;
-  --parallax-x-mid: 0px;
-  --parallax-x-fast: 0px;
-  --parallax-pointer-slow-y: 0px;
-  --parallax-pointer-mid-y: 0px;
-  --parallax-pointer-fast-y: 0px;
   background:
     radial-gradient(circle at 18% 22%, rgba(255,183,219,.34), transparent 22%),
     radial-gradient(circle at 78% 72%, rgba(183,239,102,.28), transparent 21%),
@@ -185,55 +176,6 @@ button:hover .arrow--diagonal {
   overflow: hidden;
   padding: 138px 4vw 88px;
   position: relative;
-}
-
-.hero-parallax {
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
-
-.hero-layer {
-  max-width: none;
-  pointer-events: none;
-  position: absolute;
-  will-change: transform;
-}
-
-.hero-layer--mesh {
-  left: -8%;
-  opacity: .92;
-  top: 7%;
-  transform: translate3d(
-    var(--parallax-x-slow),
-    calc(var(--parallax-slow-y) + var(--parallax-pointer-slow-y)),
-    0
-  );
-  width: 112%;
-}
-
-.hero-layer--orbits {
-  right: -15%;
-  top: -16%;
-  transform: translate3d(
-    var(--parallax-x-mid),
-    calc(var(--parallax-mid-y) + var(--parallax-pointer-mid-y)),
-    0
-  ) rotate(8deg);
-  width: min(63vw, 880px);
-}
-
-.hero-layer--sparks {
-  left: 2%;
-  top: 14%;
-  transform: translate3d(
-    var(--parallax-x-fast),
-    calc(var(--parallax-fast-y) + var(--parallax-pointer-fast-y)),
-    0
-  );
-  width: 94%;
 }
 
 .hero-layout {
@@ -380,21 +322,6 @@ button:hover .arrow--diagonal {
   position: relative;
   transform: rotate(1.2deg);
   z-index: 2;
-}
-
-.award-halo {
-  max-width: none;
-  opacity: .8;
-  pointer-events: none;
-  position: absolute;
-  right: -28%;
-  top: -24%;
-  transform: translate3d(
-    var(--parallax-x-slow),
-    calc(var(--parallax-mid-y) + var(--parallax-pointer-slow-y)),
-    0
-  ) rotate(-10deg);
-  width: 122%;
 }
 
 .award-showcase__top,
@@ -1350,25 +1277,6 @@ button:hover .arrow--diagonal {
     min-height: 0;
   }
 
-  .hero-layer--mesh {
-    left: -42%;
-    top: 4%;
-    width: 190%;
-  }
-
-  .hero-layer--orbits {
-    right: -72%;
-    top: -5%;
-    width: 150%;
-  }
-
-  .hero-layer--sparks {
-    left: -24%;
-    opacity: .48;
-    top: 9%;
-    width: 156%;
-  }
-
   .hero-eyebrow {
     font-size: .56rem;
     letter-spacing: .09em;
@@ -1435,12 +1343,6 @@ button:hover .arrow--diagonal {
     min-height: 285px;
     padding: 16px;
     transform: none;
-  }
-
-  .award-halo {
-    right: -24%;
-    top: -57%;
-    width: 110%;
   }
 
   .award-showcase__top {
@@ -1733,11 +1635,6 @@ button:hover .arrow--diagonal {
 
   .ticker-track {
     animation: none;
-  }
-
-  .hero-layer,
-  .award-halo {
-    transform: none !important;
   }
 
   *,
