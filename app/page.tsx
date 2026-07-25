@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Project = {
   title: string;
@@ -187,6 +187,39 @@ const services = [
   ["04", "Conversion growth", "Sharper journeys, smarter experiments, stronger numbers."],
 ];
 
+const heroSlides = [
+  {
+    image: "/hero/awards-studio.webp",
+    eyebrow: "Shopify website awards · 2023—2025",
+    title: "Three years.",
+    accent: "Three wins.",
+    copy: "Awarded best website three years running. Open Limits creates Shopify experiences built to lead their category.",
+    cta: "See award-winning work",
+    href: "#work",
+    position: "center",
+  },
+  {
+    image: "/hero/commerce-studio.webp",
+    eyebrow: "Conversion-first Shopify design",
+    title: "Websites built",
+    accent: "to move product.",
+    copy: "Strategy, art direction and development working as one—so every beautiful decision earns its place.",
+    cta: "Explore our portfolio",
+    href: "#work",
+    position: "center",
+  },
+  {
+    image: "/hero/launch-studio.webp",
+    eyebrow: "One senior team · worldwide",
+    title: "From first sketch",
+    accent: "to launch day.",
+    copy: "A sharp, collaborative process for ambitious brands that need clarity, momentum and a launch people remember.",
+    cta: "See how we work",
+    href: "#services",
+    position: "center",
+  },
+];
+
 function SectionWave({
   from,
   to,
@@ -233,6 +266,9 @@ export default function Home() {
   const [filter, setFilter] = useState<"All" | Project["category"]>("All");
   const [menuOpen, setMenuOpen] = useState(false);
   const [brokenImages, setBrokenImages] = useState<Record<string, boolean>>({});
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [slidesPaused, setSlidesPaused] = useState(false);
+  const swipeStart = useRef<number | null>(null);
 
   const filteredProjects = useMemo(
     () =>
@@ -254,6 +290,24 @@ export default function Home() {
     script.crossOrigin = "*";
     document.head.appendChild(script);
   }, []);
+
+  useEffect(() => {
+    if (slidesPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 6000);
+
+    return () => window.clearInterval(timer);
+  }, [slidesPaused]);
+
+  const moveSlide = (direction: number) => {
+    setActiveSlide((current) =>
+      (current + direction + heroSlides.length) % heroSlides.length,
+    );
+  };
 
   const openChat = () => {
     const chatWindow = window as typeof window & {
@@ -293,78 +347,99 @@ export default function Home() {
         </button>
       </header>
 
-      <section className="hero" id="top">
-        <div className="hero-layout">
-          <div className="hero-copy">
-            <div className="eyebrow hero-eyebrow">
-              <span className="pulse" />
-              Award-winning Shopify agency · Worldwide
-            </div>
-            <h1>
-              Shopify sites
-              <span className="hero-script">that keep winning.</span>
-            </h1>
-            <p className="hero-lede">
-              Three consecutive years awarded for best website. Open Limits turns
-              ambitious Shopify brands into category leaders people remember.
-            </p>
-            <div className="hero-actions">
-              <a className="button button--dark" href="#work">
-                See the winning work <Arrow />
-              </a>
-              <button className="text-link" onClick={openChat}>
-                Start your project <Arrow diagonal />
-              </button>
-            </div>
-            <div className="hero-trust" aria-label="Open Limits trust signals">
-              <span><b>60+</b> launches</span>
-              <span><b>4.9/5</b> client rating</span>
-              <span><b>Global</b> delivery</span>
-            </div>
-          </div>
-
-          <aside className="award-showcase" aria-label="Shopify best website awards 2023 through 2025">
-            <div className="award-showcase__top">
-              <span>THE PROOF / 03 WINS</span>
-              <strong>THREE YEARS.<br />THREE WINS.</strong>
-            </div>
-            <div className="award-showcase__title">
-              <span>AWARDED SHOPIFY AGENCY</span>
-              <strong>BEST<br />WEBSITE</strong>
-            </div>
-            <div className="award-years">
-              <div className="award-year award-year--pink">
-                <span>AWARDED</span>
-                <strong>2023</strong>
-                <small>BEST WEBSITE</small>
-              </div>
-              <div className="award-year award-year--acid">
-                <span>AWARDED</span>
-                <strong>2024</strong>
-                <small>BEST WEBSITE</small>
-              </div>
-              <div className="award-year award-year--blue">
-                <span>AWARDED</span>
-                <strong>2025</strong>
-                <small>BEST WEBSITE</small>
-              </div>
-            </div>
-            <div className="award-showcase__footer">
-              <span>2023—2025</span>
-              <span>SHOPIFY WEBSITE DESIGN</span>
-              <span>OPEN LIMITS</span>
-            </div>
-          </aside>
+      <section
+        className="hero hero-carousel"
+        id="top"
+        aria-roledescription="carousel"
+        aria-label="Open Limits highlights"
+        onMouseEnter={() => setSlidesPaused(true)}
+        onMouseLeave={() => setSlidesPaused(false)}
+        onTouchStart={(event) => {
+          swipeStart.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          if (swipeStart.current === null) return;
+          const end = event.changedTouches[0]?.clientX ?? swipeStart.current;
+          const distance = end - swipeStart.current;
+          if (Math.abs(distance) > 45) moveSlide(distance > 0 ? -1 : 1);
+          swipeStart.current = null;
+        }}
+      >
+        <div className="hero-slides" aria-live="polite">
+          {heroSlides.map((slide, index) => {
+            const Heading = index === 0 ? "h1" : "h2";
+            return (
+              <article
+                className={index === activeSlide ? "hero-slide hero-slide--active" : "hero-slide"}
+                key={slide.title}
+                aria-hidden={index !== activeSlide}
+              >
+                <img
+                  className="hero-slide__image"
+                  src={slide.image}
+                  alt=""
+                  loading={index === 0 ? "eager" : "lazy"}
+                  style={{ objectPosition: slide.position }}
+                />
+                <div className="hero-slide__shade" />
+                <div className="hero-slide__content">
+                  <div className="hero-slide__eyebrow">
+                    <span className="pulse" />
+                    {slide.eyebrow}
+                  </div>
+                  <Heading>
+                    {slide.title}
+                    <em>{slide.accent}</em>
+                  </Heading>
+                  <p>{slide.copy}</p>
+                  <div className="hero-slide__actions">
+                    <a className="hero-slide__button" href={slide.href}>
+                      {slide.cta} <Arrow />
+                    </a>
+                    <button onClick={openChat}>
+                      Talk to the team <Arrow diagonal />
+                    </button>
+                  </div>
+                  {index === 0 && (
+                    <div className="hero-award-years" aria-label="Best website awards">
+                      <span><b>2023</b> Best website</span>
+                      <span><b>2024</b> Best website</span>
+                      <span><b>2025</b> Best website</span>
+                    </div>
+                  )}
+                </div>
+                <span className="hero-slide__count">0{index + 1} / 0{heroSlides.length}</span>
+              </article>
+            );
+          })}
         </div>
 
-        <div className="hero-proof-ribbon" aria-hidden="true">
-          <span>SHOPIFY AWARD WINNER</span>
-          <b>✦</b>
-          <span>2023</span>
-          <b>✦</b>
-          <span>2024</span>
-          <b>✦</b>
-          <span>2025</span>
+        <div className="hero-controls">
+          <button className="hero-arrow" onClick={() => moveSlide(-1)} aria-label="Previous slide">
+            ←
+          </button>
+          <div className="hero-dots" role="tablist" aria-label="Choose a hero slide">
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.title}
+                className={index === activeSlide ? "hero-dot hero-dot--active" : "hero-dot"}
+                onClick={() => setActiveSlide(index)}
+                role="tab"
+                aria-selected={index === activeSlide}
+                aria-label={`Slide ${index + 1}: ${slide.title} ${slide.accent}`}
+              />
+            ))}
+          </div>
+          <button className="hero-arrow" onClick={() => moveSlide(1)} aria-label="Next slide">
+            →
+          </button>
+          <button
+            className="hero-pause"
+            onClick={() => setSlidesPaused((paused) => !paused)}
+            aria-label={slidesPaused ? "Play carousel" : "Pause carousel"}
+          >
+            {slidesPaused ? "PLAY" : "PAUSE"}
+          </button>
         </div>
       </section>
 
