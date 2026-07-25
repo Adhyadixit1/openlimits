@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 type Project = {
   title: string;
-  category: "Shopify" | "Systems" | "Social";
+  category: "Beauty" | "Food & Drink" | "Lifestyle" | "Pet Care";
   blurb: string;
   metric: string;
   image: string;
@@ -13,104 +13,107 @@ type Project = {
 };
 
 const CLOUDINARY_BASE =
-  "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_4:3";
+  "https://res.cloudinary.com/dvtdzotx2/image/upload/f_auto,q_auto,w_1400,c_fill,ar_16:9";
 
 const projects: Project[] = [
   {
-    title: "Daily Updates to Clients",
-    category: "Systems",
-    blurb: "A calm client portal that turns project progress into an easy daily ritual.",
-    metric: "2× clearer delivery",
-    image: `${CLOUDINARY_BASE}/open-limits/daily-updates-to-clients`,
+    title: "Lilikiwi",
+    category: "Beauty",
+    blurb: "A playful organic skincare experience made to feel safe for parents and delightful for children.",
+    metric: "Shopify storefront",
+    image: `${CLOUDINARY_BASE}/open-limits/lilikiwi`,
+    url: "https://lilikiwi.fr/en",
     color: "#ffb7db",
   },
   {
-    title: "Calendar for Tasks",
-    category: "Systems",
-    blurb: "A fast scheduling experience built to keep busy teams moving in one direction.",
-    metric: "42% less admin",
-    image: `${CLOUDINARY_BASE}/open-limits/calendar-for-tasks`,
+    title: "Nerdy Nuts",
+    category: "Food & Drink",
+    blurb: "Colorful, craveable commerce for a peanut butter brand with a seriously playful personality.",
+    metric: "DTC food commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/nerdy-nuts`,
+    url: "https://nerdynuts.com/",
     color: "#b7ef66",
   },
   {
-    title: "Project Tracker",
-    category: "Systems",
-    blurb: "A command centre for ownership, deadlines and delivery without the clutter.",
-    metric: "One source of truth",
-    image: `${CLOUDINARY_BASE}/open-limits/project-tracker`,
+    title: "Bearaby",
+    category: "Lifestyle",
+    blurb: "Soft editorial storytelling and effortless shopping for beautifully designed weighted blankets.",
+    metric: "Shopify Plus",
+    image: `${CLOUDINARY_BASE}/open-limits/bearaby`,
+    url: "https://bearaby.com/",
     color: "#8bdcff",
   },
   {
-    title: "Project List",
-    category: "Shopify",
-    blurb: "A portfolio-led storefront structure designed for faster discovery and action.",
-    metric: "1.8× engagement",
-    image: `${CLOUDINARY_BASE}/open-limits/project-list`,
+    title: "Nutragenis",
+    category: "Lifestyle",
+    blurb: "A confident wellness platform that makes personalized nutrition feel clear, credible and actionable.",
+    metric: "Wellness commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/nutragenis`,
+    url: "https://nutragenis.com/",
     color: "#ffdd55",
   },
   {
-    title: "Task Assigner",
-    category: "Systems",
-    blurb: "Clear assignments, fewer follow-ups and a much happier production team.",
-    metric: "Zero lost handoffs",
-    image: `${CLOUDINARY_BASE}/open-limits/task-assigner-final`,
+    title: "Baby Learns Language",
+    category: "Lifestyle",
+    blurb: "Friendly educational commerce that turns language learning into a joyful family ritual.",
+    metric: "Learning-led retail",
+    image: `${CLOUDINARY_BASE}/open-limits/baby-learns-language`,
+    url: "https://babylearnslanguage.com/",
     color: "#c8b5ff",
   },
   {
-    title: "Delivered Projects",
-    category: "Shopify",
-    blurb: "An editorial archive that gives every finished launch the moment it deserves.",
-    metric: "60+ launches",
-    image: `${CLOUDINARY_BASE}/open-limits/delivered-projects`,
+    title: "Hamel's Treats",
+    category: "Pet Care",
+    blurb: "Wholesome product storytelling for single-ingredient treats made for very happy dogs.",
+    metric: "Pet food commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/hamels-treats`,
+    url: "https://hamelstreats.com/",
     color: "#ff9068",
   },
   {
-    title: "Important Links",
-    category: "Systems",
-    blurb: "A practical resource hub with the speed and polish of a consumer product.",
-    metric: "Find it in seconds",
-    image: `${CLOUDINARY_BASE}/open-limits/important-links`,
+    title: "Emani",
+    category: "Beauty",
+    blurb: "A polished beauty destination balancing clinical confidence with modern, inclusive glamour.",
+    metric: "Beauty e-commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/emani`,
+    url: "https://emani.com/",
     color: "#64e6c0",
   },
   {
-    title: "Team Dashboard",
-    category: "Systems",
-    blurb: "Workload, wins and next moves—translated into a dashboard people use.",
-    metric: "3× faster check-ins",
-    image: `${CLOUDINARY_BASE}/open-limits/team-dashboard-final`,
+    title: "Crav Burgers",
+    category: "Food & Drink",
+    blurb: "A bold, appetite-first experience with the energy of a cult neighborhood burger spot.",
+    metric: "Hospitality website",
+    image: `${CLOUDINARY_BASE}/open-limits/crav-burgers`,
+    url: "https://www.cravburgers.shop/",
     color: "#ffb7db",
   },
   {
-    title: "How To Use",
-    category: "Systems",
-    blurb: "Friendly product education that turns first-time users into confident regulars.",
-    metric: "Less support needed",
-    image: `${CLOUDINARY_BASE}/open-limits/how-to-use`,
+    title: "Vol Dog Food",
+    category: "Pet Care",
+    blurb: "High-energy pet nutrition commerce built around fresh food, expert guidance and character.",
+    metric: "Interactive commerce",
+    image: `${CLOUDINARY_BASE}/open-limits/vol-dog-food`,
+    url: "https://www.voldogfood.com/",
     color: "#b7ef66",
   },
   {
-    title: "Social Media Posting",
-    category: "Social",
-    blurb: "A high-output content system that keeps every channel consistent and alive.",
-    metric: "30 days, planned",
-    image: `${CLOUDINARY_BASE}/open-limits/social-media-posting`,
+    title: "Happy Pet",
+    category: "Pet Care",
+    blurb: "A minimal product story that makes smarter pet parenting feel simple and immediately useful.",
+    metric: "Digital product launch",
+    image: `${CLOUDINARY_BASE}/open-limits/happy-pet`,
+    url: "https://happypet.care/",
     color: "#8bdcff",
   },
   {
-    title: "Store Preview Library",
-    category: "Shopify",
-    blurb: "A visual launch library for comparing, approving and sharing new storefronts.",
-    metric: "Approval, simplified",
-    image: `${CLOUDINARY_BASE}/open-limits/store-preview-library`,
+    title: "Manitobah",
+    category: "Lifestyle",
+    blurb: "Story-rich commerce celebrating Indigenous design, craft and a global footwear community.",
+    metric: "Shopify Plus",
+    image: `${CLOUDINARY_BASE}/open-limits/manitobah`,
+    url: "https://www.manitobah.com/",
     color: "#ffdd55",
-  },
-  {
-    title: "All Store Previews",
-    category: "Shopify",
-    blurb: "Every commerce experience in one clean, beautifully browsable collection.",
-    metric: "Built to be browsed",
-    image: `${CLOUDINARY_BASE}/open-limits/all-store-previews`,
-    color: "#c8b5ff",
   },
 ];
 
@@ -325,7 +328,7 @@ export default function Home() {
         </div>
 
         <div className="filters" role="group" aria-label="Filter projects">
-          {(["All", "Shopify", "Systems", "Social"] as const).map((item) => (
+          {(["All", "Beauty", "Food & Drink", "Lifestyle", "Pet Care"] as const).map((item) => (
             <button
               key={item}
               className={filter === item ? "filter filter--active" : "filter"}

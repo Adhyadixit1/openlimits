@@ -40,3 +40,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/.trash/
+/artifacts/
+/.openai/artifacts/
